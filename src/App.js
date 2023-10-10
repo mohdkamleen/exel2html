@@ -9,7 +9,7 @@ function App() {
   const [data, setData] = useState([])
  
   const handleChange = (e) => {
-    setData([])
+    
     readXlsxFile(e.target.files[0]).then((rows) => {
       setData(rows)
     })
