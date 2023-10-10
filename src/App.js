@@ -1,30 +1,39 @@
 import readXlsxFile from 'read-excel-file'
-import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
 
   const [data, setData] = useState([])
- 
+  const [loading, setloading] = useState(false)
+
   const handleChange = (e) => {
-    setData([])
-    readXlsxFile(e.target.files[0]).then((rows) => {
+    setloading(true)
+    readXlsxFile(e.target.files[0])
+    .then((rows) => {
       setData(rows)
     })
+    .catch(err => console.log(err))
+    .finally(e => setloading(false))
   }
 
-  fetch('ucpro.xlsx')
-    .then(response => response.blob())
-    .then(blob => readXlsxFile(blob))
-    .then((rows) => {
-      setData(rows);
-    })
+  data && console.log(data)
+
+
+
+  useEffect(() => {
+    fetch('ucpro.xlsx')
+      .then(response => response.blob())
+      .then(blob => readXlsxFile(blob))
+      .then((rows) => {
+        setData(rows);
+      })
+  }, [])
+
 
   return (
     <div className="App">
-      <input type="file" onChange={handleChange} /> <br /><br />
+      Custom : <input type="file" onChange={handleChange} /> &ensp; {loading && "Loading..."} <br /><br />
       <table border={1} cellSpacing="0">
         {
           data && data.map((blob, i) => (
