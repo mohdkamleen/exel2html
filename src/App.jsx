@@ -80,6 +80,15 @@ function App() {
           <p>DISCREPANCY : <b>{
             0 - ((data.trf - data.tfbr) * 1)
           }</b></p> <br />
+          <button onClick={() => {
+            setscreen("af")
+            setData({
+              af: "",
+              trf: "",
+              tfbr: "",
+              rsg: ""
+            })
+          }}>Reset</button>
         </>)}
 
     </div>
