@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 function App() {
 
@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App" style={{ margin: "20px 5%" }}>
 
-      {screen == "af" && (
+      {screen === "af" && (
         <>
           <label>
             ARRIVAL FUEL (KG) : <br />
@@ -27,7 +27,7 @@ function App() {
           <button onClick={() => !data.af ? alert("Required.") : setscreen("trf")}>Next</button>
         </>)}
 
-      {screen == "trf" && <div className="trf">
+      {screen === "trf" && <div className="trf">
         <label>
           TOTAL REQUIRED FUEL (KG) : <br />
           <input
@@ -40,7 +40,7 @@ function App() {
         <button onClick={() => !data.trf ? alert("Required.") : setscreen("tfbr")}>Next</button>
       </div>}
 
-      {screen == "tfbr" && (
+      {screen === "tfbr" && (
         <>
           <label>
             FUEL FIGURE BEFORE REFUELING (KG) : <br />
@@ -54,7 +54,7 @@ function App() {
           <button onClick={() => !data.tfbr ? alert("Required.") : setscreen("rsg")}>Next</button>
         </>)}
 
-      {screen == "rsg" && (
+      {screen === "rsg" && (
         <>
           <label>
             REFUELING SPECIFIC GRAVITY (S.G) : <br />
@@ -68,7 +68,7 @@ function App() {
           <button onClick={() => !data.rsg ? alert("Required.") : setscreen("report")}>Next</button>
         </>)}
 
-      {screen == "report" && (
+      {screen === "report" && (
         <>
           <h3>Rreport </h3>
           <p>CONVERSION FACTOR : <b>1</b></p>
